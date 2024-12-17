@@ -13,24 +13,21 @@
         }
         function a() {
           // Set up the iframe creation in a delayed manner using setTimeout
-          setTimeout(function () {
-            var iframe = document.createElement("iframe");
-            // Styling for iframe
-            iframe.style.width = "100%";
-            iframe.style.height = "100vh"; // Use 100vh for full viewport height
-            iframe.style.border = "none";
-            iframe.style.margin = "0";
-            iframe.style.padding = "0";
-            iframe.style.display = "block";
-            iframe.style.overflowX = "hidden";
+          var iframe = document.createElement("iframe");
 
-            // Prompt to ask the user for a URL
-            var url = prompt("What URL do you want to unblock?");
-            if (url) {
-              iframe.src = url; // Set the iframe source to the user's URL input
-              document.body.appendChild(iframe); // Append the iframe to the body
-            }
-          }, 5000); // Delay iframe creation for 5 seconds
+              // Styling for iframe
+              iframe.style.width = "100%";
+              iframe.style.height = "100vh"; // Use 100vh for full viewport height
+              iframe.style.border = "none";
+              iframe.style.margin = "0";
+              iframe.style.padding = "0";
+              iframe.style.display = "block";
+              iframe.style.overflowX = "hidden";
+
+              iframe.src = url; // Set the iframe source to the URL the user provides
+          document.body.innerHTML = "";
+              document.body.appendChild(iframe);
+          
         }
       } catch (e) {
         alert(e); // Catch and alert any errors
