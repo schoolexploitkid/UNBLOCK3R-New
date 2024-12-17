@@ -24,7 +24,7 @@
               iframe.style.display = "block";
               iframe.style.overflowX = "hidden";
 
-              iframe.src = url; // Set the iframe source to the URL the user provides
+              iframe.src = prompt("What URL do you want to unblock? Please include https://"); // Set the iframe source to the URL the user provides
           document.body.innerHTML = "";
               document.body.appendChild(iframe);
           
