@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
   <body>
+    <button onclick = "a()">Start Process</button>
     <script>
       window.unbeforeunload = () => {return false;};
-      alert("DIRECTIONS: A prompt will soon show up asking what page you want to open. Type the URL of the page, including https://. Next, a prompt will show up asking you if you want to leave the page. Click no. It might show up again, but click prevent this page from making additional dialogues, and then click cancel. You can now visit the page unblocked!");
-      try {
-        fetch('https://raw.githubusercontent.com/schoolexploitkid/UNBLOCK3R-New/refs/heads/main/index.js').then(data => {data.text().then(text=>{eval(text)})});
-        alert("Started");
-      } catch (e) {
-        alert(e);
+      alert("DIRECTIONS: Click somewhere on the page first (excluding button). Click Start Process. Then, a prompt will soon show up asking what page you want to open. Type the URL of the page, including https://. Next, a prompt will show up asking you if you want to leave the page. Click no. It might show up again, but click prevent this page from making additional dialogues, and then click cancel. You can now visit the page unblocked!");
+      function a () {
+        document.body.innerHTML = "";
+// this is poorly written
+setTimeout((function () {var a = document.createElement("iframe"); body.style.height = "100%"; body.style.margin = "0px"; body.style.padding = "0px"; body.style.border = "none"; a.style.width = "100%"; a.style.height = "100%"; a.style.border = "none"; a.style.margin = "0px"; a.style.padding = "0px"; a.style.display = "block"; a.style.overflowX = "hidden"; a.src = prompt("What URL do you want to unblock?"); document.body.appendChild(a);}), 5000)
+
       }
     </script>
   </body>
