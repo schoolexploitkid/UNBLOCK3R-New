@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <body>
+  <body onload = "b()">
     <button onclick="a()">Start Process</button>
     <script>
       try {
+        function b () {
         window.onbeforeunload = function () { 
           return false; 
         };
 
         alert("DIRECTIONS: Click somewhere on the page first (excluding the button). Click Start Process. Then, a prompt will soon show up asking what page you want to open. Type the URL of the page, including https://. Next, a prompt will show up asking you if you want to leave the page. Click 'No'. It might show up again, but click 'Prevent this page from making additional dialogues', and then click 'Cancel'. You can now visit the page unblocked!");
-
+        }
         function a() {
-          // Clear the content of the page except the button.
-          document.body.innerHTML = "<button onclick='a()'>Start Process</button>";
-
           // Set up the iframe creation in a delayed manner using setTimeout
           setTimeout(function () {
             var iframe = document.createElement("iframe");
