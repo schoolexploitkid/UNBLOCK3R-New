@@ -1,37 +1,79 @@
-<!DOCTYPE html>
-<html>
-  <body onload = "b()">
-    <button onclick="try{a()}catch(e){alert(e)}">Start Process</button>
+<!DOCTYPE HTML>
+<body>
+    <div class="container">
+        <h1>SkidScrape v0.1</h1>
+        <input type="text" id="urlInput" placeholder="Enter a URL (e.g., https://kour.io)">
+        <button onclick="loadUrl()">Load URL</button>
+        <button onclick="openInEmbeddedUrl()">Open in Embedded URL</button>
+        <button onclick="goFullscreen()">Go Fullscreen</button>
+        <button onclick="loadEruda()">Load Eruda</button>
+        
+        <svg id="urlEmbed" xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+            <title>Embedded URL</title>
+            <foreignObject x="0" y="0" width="1280" height="720">
+                <embed id="urlEmbedContent" xmlns="http://www.w3.org/1999/xhtml" src="" type="text/html" width="1260" height="700" />
+            </foreignObject>
+        </svg>
+    </div>
+
+    <footer>
+        By Charlieis1nsan3
+    </footer>
+
     <script>
-      try {
-        function b () {
-        window.onbeforeunload = function () { 
-          return false; 
-        };
+        function loadUrl() {
+            const urlInput = document.getElementById('urlInput').value;
+            const urlEmbedContent = document.getElementById('urlEmbedContent');
 
-        alert("DIRECTIONS: Click somewhere on the page first (excluding the button). Click Start Process. Then, a prompt will soon show up asking what page you want to open. Type the URL of the page, including https://. Next, a prompt will show up asking you if you want to leave the page. Click 'No'. It might show up again, but click 'Prevent this page from making additional dialogues', and then click 'Cancel'. You can now visit the page unblocked!");
+            // Validate the URL
+            if (urlInput) {
+                // Set the embed source to the entered URL
+                urlEmbedContent.src = urlInput;
+            } else {
+                alert("Please enter a valid URL.");
+            }
         }
-        function a() {
-          // Set up the iframe creation in a delayed manner using setTimeout
-          var iframe = document.createElement("iframe");
 
-              // Styling for iframe
-              iframe.style.width = "100%";
-              iframe.style.height = "100vh"; // Use 100vh for full viewport height
-              iframe.style.border = "none";
-              iframe.style.margin = "0";
-              iframe.style.padding = "0";
-              iframe.style.display = "block";
-              iframe.style.overflowX = "hidden";
-
-              iframe.src = prompt("What URL do you want to unblock? Please include https://"); // Set the iframe source to the URL the user provides
-          document.body.innerHTML = "";
-              document.body.appendChild(iframe);
-          
+        function openInEmbeddedUrl() {
+            const urlInput = document.getElementById('urlInput').value;
+            const newWindow = window.open('about:blank', '_blank');
+            if (urlInput) {
+                newWindow.document.write(`
+                    <html>
+                        <head>
+                            <title>"${urlInput}</title>
+                        </head>
+                        <body style="margin: 0; overflow: hidden;">
+                            <iframe src="${urlInput}" style="width: 100%; height: 100%; border: none;"></iframe>
+                        </ body>
+                    </html>
+                `);
+                newWindow.document.close();
+            } else {
+                alert("Please enter a valid URL.");
+            }
         }
-      } catch (e) {
-        alert(e); // Catch and alert any errors
-      }
+
+        function goFullscreen() {
+            const svgElement = document.getElementById('urlEmbed');
+            if (svgElement.requestFullscreen) {
+                svgElement.requestFullscreen();
+            } else if (svgElement.mozRequestFullScreen) { // Firefox
+                svgElement.mozRequestFullScreen();
+            } else if (svgElement.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+                svgElement.webkitRequestFullscreen();
+            } else if (svgElement.msRequestFullscreen) { // IE/Edge
+                svgElement.msRequestFullscreen();
+            }
+        }
+
+        function loadEruda() {
+            var script = document.createElement('script');
+            script.src = "https://cdn.jsdelivr.net/npm/eruda";
+            document.body.appendChild(script);
+            script.onload = function() {
+                eruda.init();
+            };
+        }
     </script>
-  </body>
-</html>
+</body>
